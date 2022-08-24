@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,15 +10,54 @@
     <link href="style.css" rel="stylesheet">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
-    <div class = "wrapper">
-        <header><i class = "bx bx-left-arrow-alt"></i>Weather App</header>
+    <div class="wrapper">
+        <header><i class="bx bx-left-arrow-alt"></i>Weather App</header>
         <section class="input-part">
-            <p class="info-txt pending">Please Enter a Valid City name</p>
-            <input type="text" placeholder="Enter City Name" spellcheck="false" required>
-            <div class="separator"></div>
-            <button>Get Device Location</button>
+            <p class="info-txt">Please Enter a Valid City name</p>
+            <div class="content">
+                <input type="text" placeholder="Enter City Name" spellcheck="false" required>
+                <div class="separator"></div>
+                <button>Get Device Location</button>
+            </div>
+        </section>
+
+        <section class="weather-part">
+            <img src="#" alt="Weather Icon">
+            <div class="temp">
+                <span class="num">_</span>
+                <span class="deg">°</span>C
+            </div>
+            <div class="weather">_ _</div>
+            <div class="location">
+                <i class="bx bx-map"></i>
+                <span>Kathmandu, Nepal</span>
+            </div>
+            <div class="bottom-details">
+                <div class="column feels">
+                    <i class="bx bxs-thermometer"></i>
+                    <div class="details">
+                        <div class="temp">
+                            <span class="num-2">_</span>
+                            <span class="deg">°</span>C
+                        </div>
+                        <p>Feels like</p>
+                    </div>
+                </div>
+                <div class="column humidity">
+                    <i class="bx bxs-droplet-half"></i>
+                    <div class="details">
+                        <span>_</span>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+            </div>
         </section>
     </div>
+
+    <script src="script.js"></script>
+
 </body>
+
 </html>

@@ -1,78 +1,103 @@
 /* import google font Modern Antiqua */
 @import url('https://fonts.font.im/css?family=Modern+Antiqua');
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Modern Antiqua', sans-serif;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Modern Antiqua', sans-serif;
 }
+
 /* flex： flexible
 justify-content: space-around
 100vh: height of screen, 100%: height of container */
-body{
+body {
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
     background: #a1213b;
 }
-.wrapper{
+
+.wrapper {
     width: 400px;
     border-radius: 8px;
     background: #fff;
 }
+
 /* solid: solid/real line 
 padding: padding: up/down left/right*/
-.wrapper header{
+.wrapper header {
     display: flex;
-    color:#a1213b;
+    color: #a1213b;
     font-size: 22px;
     font-weight: 500;
     padding: 16px 16px;
     align-items: center;
-    border-bottom: 1px solid #bfbfbf;
+    border-bottom: 1px solid #ccc;
 }
+
 /* cursor: pointer; change the shape of pointer */
-header i{
+header i {
     cursor: pointer;
-    font-size: 30px;
+    font-size: 0px;
     margin-right: 8px;
 }
+
+.wrapper.active header i {
+    font-size: 30px;
+    margin-left: 5px;
+}
+
 /* add . for created class, primitive class like header no need . 
 margin: up left down right
 margin: up/down left/right*/
-.wrapper .input-part{
+.wrapper .input-part {
     margin: 20px 25px 30px;
 }
-.input-part :where(input, button){
+
+.wrapper.active .input-part {
+    display: none;
+}
+
+.input-part :where(input, button) {
     width: 100%;
-    height: 60px;
+    height: 56px;
     border: none;
     outline: none;
     font-size: 18px;
     border-radius: 8px;
 }
-.input-part .info-txt{
+
+.input-part .info-txt {
+    display: none;
     font-size: 18px;
     text-align: center;
     padding: 12px 10px;
     border-radius: 8px;
     margin-bottom: 16px;
 }
-.info-txt.error{
+
+.info-txt.error {
+    display: block;
     color: #721c24;
     background: #f8d7da;
     border: 1px solid #f5c6cb;
 }
-.info-txt.pending{
+
+.info-txt.pending {
+    display: block;
     color: #0c5460;
     background: #d1ecf1;
     border: 1px solid #bee5eb;
 }
-.input-part input{
+
+.input-part input {
     text-align: center;
+    padding: 0 15px;
     border: 1px solid #bfbfbf;
 }
+
 /* :is() is equal to :match()
 :required
 inputcan't be blank。
@@ -91,28 +116,145 @@ equal:
 :is(div, p, ul, ol) span {  
 } 
 */
-.input-part input:is(:focus, :valid){
+.input-part input:is(:focus, :valid) {
     border: 2px solid #a1213b;
 }
-.input-part .separator{
+
+.input-part input::placeholder {
+    color: #bfbfbf;
+}
+
+.input-part .separator {
     height: 2px;
     width: 100%;
     margin: 25px 0;
     background: #ccc;
     display: flex;
+    position: relative;
+    /* position:relative attribute sets the element to relative positioning, which turns the element into a boxed space, then the box of the relatively positioned element is shifted by a certain distance. The element still retains its unpositioned shape, and the space it originally occupied remains*/
     align-items: center;
     justify-content: center;
 }
+
 /*::before{} insert content element */
-.separator::before{
+.separator::before {
     content: "or";
     color: #ccc;
     font-size: 20px;
     padding: 0 16px;
     background: #fff;
 }
-.input-part button{
+
+.input-part button {
     color: #fff;
     cursor: pointer;
     background: #a1213b;
+    /* transition property is a shorthand property used to set four transition properties.
+    transition-property: specifies the name of the CSS property that sets the transition effect.
+    transition-duration: specifies how many seconds or milliseconds it takes to complete the transition effect.
+    transition-timing-function: specifies the speed curve of the speed effect.
+    transition-delay: defines when the transition effect will start.*/
+    transform: 0.3s ease;
+}
+
+/*
+The flex-direction property specifies the orientation of the flexible item.
+row defaults. Flexible items will be displayed horizontally, as will a row.	
+row-reverse is the same as row, but in reverse order.	
+column Flexible items will be displayed vertically, just like a column.	
+column-reverse is the same as column, but in reverse order.
+*/
+.wrapper .weather-part {
+    margin: 30px 0 0;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.wrapper.active .weather-part {
+    display: flex;
+}
+
+.weather-part img {
+    max-width: 125px;
+}
+
+.weather-part .temp {
+    display: flex;
+    font-size: 72px;
+    font-weight: 500;
+}
+
+.weather-part .temp .numb {
+    font-weight: 600;
+}
+
+.weather-part .temp .deg {
+    font-size: 40px;
+    margin: 10px 6px 0 0;
+    display: block;
+}
+
+.weather-part .weather {
+    font-size: 22px;
+    text-align: center;
+    margin: -5px 20px 15px;
+}
+
+.weather-part .location {
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+/*<i> tag renders text in italics.*/
+.location i {
+    font-size: 23px;
+    margin-right: 6px;
+}
+
+.weather-part .bottom-details {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #bfbfbf;
+    justify-content: space-between;
+}
+
+.bottom-details .column {
+    width: 100%;
+    display: flex;
+    padding: 16px 0;
+    align-items: center;
+    justify-content: center;
+}
+
+.column i {
+    color: #a1213b;
+    font-size: 40px;
+}
+
+/*Here, the class in html is "column humidity", therefore here is no space*/
+.column.humidity {
+    border-left: 1px solid #bfbfbf;
+}
+
+.details .temp,
+.humidity span {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: -3px;
+}
+
+.details .temp .deg {
+    margin: 0;
+    font-size: 18px;
+    pad: 0 2px 0 1px;
+}
+
+.details p {
+    font-size: 14px;
+    margin-top: -2px;
 }
